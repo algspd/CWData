@@ -1,0 +1,29 @@
+body{
+  margin-left:20px;
+  margin-top:20px;
+}
+#sobre_impresora{
+  margin-right:20px;
+  padding:20px;
+  padding-top:0px;
+  border: 2px solid green;
+  width: 400px;
+  float:left;
+}
+
+#sobre_constructor{
+  padding:20px;
+  padding-top:0px;
+  border: 2px solid green;
+  width: 400px;
+  float:left;
+}
+
+#enviar{
+  clear:both;
+  padding-top:5px;
+}
+
+h5 {
+  margin-bottom:3px;
+}
