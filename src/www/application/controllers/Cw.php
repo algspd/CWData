@@ -45,6 +45,25 @@ class Cw extends CI_Controller {
 	 */
 	public function index()
 	{
+          $this->load->database();
+          $query = $this->db->query('SELECT id,human FROM models');
+          $models = array();
+          foreach ($query->result() as $row){
+            $models[$row->id] = $row->human;
+          }
+          $query = $this->db->query('SELECT id_provincia,provincia FROM provincias');
+          $provincias = array();
+          $provincias[-1]="Provincia";
+          foreach ($query->result() as $row){
+            $provincias[$row->id_provincia] = $row->provincia;
+          }
+
+          $query = $this->db->query('SELECT printernumber, printername FROM impresoras');
+          $printers = array();
+          foreach ($query->result() as $row){
+            $printers[$row->printernumber] = $row->printername;
+          }
+          
 		$this->load->helper(array('form', 'url'));
                 $this->load->helper('date');
 
@@ -58,14 +77,59 @@ class Cw extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			$this->load->view('cw_view');
+                        $data=array(
+                          'models' => $models,
+                          'provincias' => $provincias,
+                          'printers' => $printers,
+                        );
+			$this->load->view('cw_view',$data);
 		}
 		else
 		{
-			$this->load->view('formsuccess');
+                        // Guardar en DB
+                        echo "Guardando en DB<br/><br/>\n\nDatos:<br/>\n";
+                        
+                        $printernumber	 = $this->input->post('printernumber');
+                        $printername     = $this->input->post('printername');
+                        $fnacimiento     = $this->input->post('fnacimiento');
+                        $printermodel    = $this->input->post('printermodel');
+                        $printermother   = $this->input->post('printermother');
+                        $printerlocation = $this->input->post('printerlocation');
+                        $printerurl      = $this->input->post('printerurl');
+                        $printeralive    = 1;
+                        
+                        $username        = $this->input->post('username');
+                        $userurl         = $this->input->post('userurl');
+                        $useremail       = $this->input->post('useremail');
+
+                        echo ("#$printernumber: $printername <br/>\n");
+                        echo "Fecha de nacimiento: $fnacimiento<br/>\n";
+                        echo "Impresora de tipo $printermodel hija de la impresora n&uacute;mero #$printermother<br/>\n";
+                        echo "<a href=\"$printerurl\">Más información sobre la impresora</a><br/><br/>\n\n";
+                        
+                        echo "Autor: <a  href=\"$userurl\">$username</a> $useremail";
+                        $user = array(
+                          'username' => $username,
+                          'userurl' => $userurl,
+                          'useremail' => $useremail
+                        );
+                        $this->db->insert('users', $user); 
+
+                        $printer = array(
+                          'printernumber' => $printernumber,
+                          'printername' => $printername,
+                          'fnacimiento' => $fnacimiento,
+                          'printermodel' => $printermodel,
+                          'printermother' => $printermother,
+                          'printerlocation' => $printerlocation,
+                          'printerurl' => $printerurl,
+                          'printeralive' => $printeralive,
+                          'username'    => $username,
+                        );
+                        $this->db->insert('impresoras', $printer); 
+
+			//$this->load->view('formsuccess');
 		}
 	}
 }
 
-/* End of file Cw.php */
-/* Location: ./application/controllers/Cw.php */
