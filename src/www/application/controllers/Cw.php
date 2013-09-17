@@ -1,135 +1,119 @@
 <?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP 5.2.4 or newer
- *
- * NOTICE OF LICENSE
- *
- * Licensed under the Academic Free License version 3.0
- *
- * This source file is subject to the Academic Free License (AFL 3.0) that is
- * bundled with this package in the files license_afl.txt / license_afl.rst.
- * It is also available through the world wide web at this URL:
- * http://opensource.org/licenses/AFL-3.0
- * If you did not receive a copy of the license and are unable to obtain it
- * through the world wide web, please send an email to
- * licensing@ellislab.com so we can send you a copy immediately.
- *
- * @package		CodeIgniter
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2013, EllisLab, Inc. (http://ellislab.com/)
- * @license		http://opensource.org/licenses/AFL-3.0 Academic Free License (AFL 3.0)
- * @link		http://codeigniter.com
- * @since		Version 1.0
- * @filesource
- */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Cw extends CI_Controller {
+  public function index(){
+    $this->load->database();
+    $query = $this->db->query('SELECT id,human FROM models');
+    $models = array();
+    foreach ($query->result() as $row){
+      $models[$row->id] = $row->human;
+    }
+    
+    $query = $this->db->query('SELECT id_provincia,provincia FROM provincias');
+    $provincias = array();
+    $provincias[-1]="Provincia";
+    foreach ($query->result() as $row){
+      $provincias[$row->id_provincia] = $row->provincia;
+    }
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
-	public function index()
-	{
-          $this->load->database();
-          $query = $this->db->query('SELECT id,human FROM models');
-          $models = array();
-          foreach ($query->result() as $row){
-            $models[$row->id] = $row->human;
-          }
-          $query = $this->db->query('SELECT id_provincia,provincia FROM provincias');
-          $provincias = array();
-          $provincias[-1]="Provincia";
-          foreach ($query->result() as $row){
-            $provincias[$row->id_provincia] = $row->provincia;
-          }
+    $query = $this->db->query('SELECT printernumber, printername FROM impresoras');
+    $printers = array();
+    foreach ($query->result() as $row){
+      ($row->printernumber<0)?$printers[$row->printernumber] = $row->printername : 
+      $printers[$row->printernumber] = "#$row->printernumber: $row->printername";
+    }
 
-          $query = $this->db->query('SELECT printernumber, printername FROM impresoras');
-          $printers = array();
-          foreach ($query->result() as $row){
-            $printers[$row->printernumber] = $row->printername;
-          }
-          
-		$this->load->helper(array('form', 'url'));
-                $this->load->helper('date');
+    $query = $this->db->query('SELECT username FROM users');
+    $users = array();
+    foreach ($query->result() as $row){
+      $users[$row->username] = $row->username;
+    }
+    $this->load->helper(array('form', 'url'));
+    $this->load->helper('date');
 
-		$this->load->library('form_validation');
+    $config['upload_path'] = './uploads/';
+    $config['allowed_types'] = 'gif|jpg|png';
+    $this->load->library('upload', $config);
 
-                $this->form_validation->set_message('required', 'El campo "%s" es obligatorio');
-                $this->form_validation->set_rules('printername', 'Nombre de la impresora', 'required');
-                //$this->form_validation->set_rules('username', 'Nombre o nick del constructor', 'required');
-                $this->form_validation->set_rules('printernumber', 'N&uacute;mero de la impresora', 'required');
-                //$this->form_validation->set_rules('printermodel', 'Modelo de la impresora', 'required');
+    // Reglas de validación
+    $this->load->library('form_validation');
+    $this->form_validation->set_message('required', 'El campo "%s" es obligatorio');
+    $this->form_validation->set_message('is_unique', 'El campo "%s" debe ser único');
+    $this->form_validation->set_message('valid_email', 'El campo "%s" debe contener un e-mail');
+    $this->form_validation->set_message('numeric', 'El campo "%s" debe contener solo números');
+    $this->form_validation->set_message('integer', 'El campo "%s" debe ser un número entero');
+    $this->form_validation->set_message('exact_length', 'La longitud del campo "%s" no es correcta');
+    
+    if ($this->input->post('cw')){
+      $this->form_validation->set_rules('printername', 'Nombre', 'required');
+      $this->form_validation->set_rules('printernumber', 'N&uacute;mero',
+        'required|is_unique[impresoras.printernumber]|numeric|integer');
+      $this->form_validation->set_rules('fnacimiento', 'Fecha de nacimiento','exact_length[10]');
+    }
 
-		if ($this->form_validation->run() == FALSE)
-		{
-                        $data=array(
-                          'models' => $models,
-                          'provincias' => $provincias,
-                          'printers' => $printers,
-                        );
-			$this->load->view('cw_view',$data);
-		}
-		else
-		{
-                        // Guardar en DB
-                        echo "Guardando en DB<br/><br/>\n\nDatos:<br/>\n";
-                        
-                        $printernumber	 = $this->input->post('printernumber');
-                        $printername     = $this->input->post('printername');
-                        $fnacimiento     = $this->input->post('fnacimiento');
-                        $printermodel    = $this->input->post('printermodel');
-                        $printermother   = $this->input->post('printermother');
-                        $printerlocation = $this->input->post('printerlocation');
-                        $printerurl      = $this->input->post('printerurl');
-                        $printeralive    = 1;
-                        
-                        $username        = $this->input->post('username');
-                        $userurl         = $this->input->post('userurl');
-                        $useremail       = $this->input->post('useremail');
+    if ($this->input->post('cwuser')){
+      $this->form_validation->set_rules('username', 'Nombre de usuario', 'required');
+      $this->form_validation->set_rules('useremail', 'Email', 'valid_email');
+    }
+    
+    $viewdata=array(
+      'models' => $models,
+      'provincias' => $provincias,
+      'printers' => $printers,
+      'users' => $users,
+    );
 
-                        echo ("#$printernumber: $printername <br/>\n");
-                        echo "Fecha de nacimiento: $fnacimiento<br/>\n";
-                        echo "Impresora de tipo $printermodel hija de la impresora n&uacute;mero #$printermother<br/>\n";
-                        echo "<a href=\"$printerurl\">Más información sobre la impresora</a><br/><br/>\n\n";
-                        
-                        echo "Autor: <a  href=\"$userurl\">$username</a> $useremail";
-                        $user = array(
-                          'username' => $username,
-                          'userurl' => $userurl,
-                          'useremail' => $useremail
-                        );
-                        $this->db->insert('users', $user); 
+    // Validacion
+    if ($this->form_validation->run() == FALSE){
+      $this->load->view('cw_view',$viewdata);
+    }
+    else{
+      // Guardar en DB
+      if ($this->input->post('cw') && $this->upload->do_upload("foto")){
+        // Si se trata de una impresora y se ha podido subir la foto
+        $data = $this->upload->data();
+        $printer = array(
+          'printernumber'   => $this->input->post('printernumber'),
+          'printername'     => $this->input->post('printername'),
+          'fnacimiento'     => $this->input->post('fnacimiento'),
+          'printermodel'    => $this->input->post('printermodel'),
+          'printermother'   => $this->input->post('printermother'),
+          'printerlocation' => $this->input->post('printerlocation'),
+          'printerurl'      => $this->input->post('printerurl'),
+          'printeralive'    => 1,
+          'username'        => $this->input->post('printerusername'),
+          'foto'            => $data['full_path'],
+        );
+        $res=$this->db->insert('impresoras', $printer); 
+        if(!$res){
+          $this->form_validation->set_message('false', 'El campo no es v&aacute;lido');
+          $this->form_validation->run();
+          $this->load->view('cw_view',$viewdata);
+        }
+        $data=array('printer'=>$printer);
+        $this->load->view('cw_success',$data);
+      }
+      else if ($this->input->post("cwuser")){
+      // Si se trata de un constructor
+        $user = array(
+          'username'  => $this->input->post('username'),
+          'userurl'   => $this->input->post('userurl'),
+          'useremail' => $this->input->post('useremail'),
+        );
+        $this->db->insert('users', $user); 
+        $data=array('user'=>$user);
+        $this->load->view('cwuser_success',$data);
+      }
+      else {
+        // Si la foto estaba vacía o ha habido algún problema con ella
+        $nofoto="El campo \"Foto\" es obligatorio<br/>";
+        $viewdata['nofoto'] = $nofoto;
+        $this->load->view('cw_view',$viewdata);
+      }
 
-                        $printer = array(
-                          'printernumber' => $printernumber,
-                          'printername' => $printername,
-                          'fnacimiento' => $fnacimiento,
-                          'printermodel' => $printermodel,
-                          'printermother' => $printermother,
-                          'printerlocation' => $printerlocation,
-                          'printerurl' => $printerurl,
-                          'printeralive' => $printeralive,
-                          'username'    => $username,
-                        );
-                        $this->db->insert('impresoras', $printer); 
 
-			//$this->load->view('formsuccess');
-		}
-	}
+    }
+  }
 }
 

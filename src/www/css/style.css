@@ -27,3 +27,8 @@ body{
 h5 {
   margin-bottom:3px;
 }
+
+.error{
+  font-size:12px;
+  color:red;
+}
