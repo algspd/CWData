@@ -23,6 +23,8 @@ class Cw extends CI_Controller {
       ($row->printernumber<0)?$printers[$row->printernumber] = $row->printername : 
       $printers[$row->printernumber] = "#$row->printernumber: $row->printername";
     }
+    $printers2=$printers;
+    $printers2[-100000]="Seleccionar";
 
     $query = $this->db->query('SELECT username FROM users');
     $users = array();
@@ -43,12 +45,13 @@ class Cw extends CI_Controller {
     $this->form_validation->set_message('valid_email', 'El campo "%s" debe contener un e-mail');
     $this->form_validation->set_message('numeric', 'El campo "%s" debe contener solo números');
     $this->form_validation->set_message('integer', 'El campo "%s" debe ser un número entero');
+    $this->form_validation->set_message('natural', 'El campo "%s" debe ser un número positivo');
     $this->form_validation->set_message('exact_length', 'La longitud del campo "%s" no es correcta');
     
     if ($this->input->post('cw')){
       $this->form_validation->set_rules('printername', 'Nombre', 'required');
       $this->form_validation->set_rules('printernumber', 'N&uacute;mero',
-        'required|is_unique[impresoras.printernumber]|numeric|integer');
+        'required|is_unique[impresoras.printernumber]|numeric|integer|natural');
       $this->form_validation->set_rules('fnacimiento', 'Fecha de nacimiento','exact_length[10]');
     }
 
@@ -56,11 +59,16 @@ class Cw extends CI_Controller {
       $this->form_validation->set_rules('username', 'Nombre de usuario', 'required');
       $this->form_validation->set_rules('useremail', 'Email', 'valid_email');
     }
+
+    if ($this->input->post('cwmodel')){
+      $this->form_validation->set_rules('model', 'Nombre del modelo', 'required|is_unique[models.human]|is_unique[models.id]');
+    }
     
     $viewdata=array(
       'models' => $models,
       'provincias' => $provincias,
       'printers' => $printers,
+      'printers2' => $printers2,
       'users' => $users,
     );
 
@@ -105,14 +113,23 @@ class Cw extends CI_Controller {
         $data=array('user'=>$user);
         $this->load->view('cwuser_success',$data);
       }
+      else if ($this->input->post("cwmodel")){
+      // Si se trata de un constructor
+        $model = array(
+          'id'         => $this->input->post('model'),
+          'human'  => $this->input->post('model'),
+          'url'   => $this->input->post('modelurl')
+        );
+        $this->db->insert('models', $model); 
+        $data=array('model'=>$model);
+        $this->load->view('cwmodel_success',$data);
+      }
       else {
         // Si la foto estaba vacía o ha habido algún problema con ella
         $nofoto="El campo \"Foto\" es obligatorio<br/>";
         $viewdata['nofoto'] = $nofoto;
         $this->load->view('cw_view',$viewdata);
       }
-
-
     }
   }
 }

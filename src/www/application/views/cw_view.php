@@ -49,8 +49,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <?php inlist($users, 'printerusername', "Nombre o nick del constructor");?>
   <div id="enviar"><input type="submit" value="Guardar" name="cw"/></div>
 </div>
-
-
 </form>
 
 <?php echo form_open('cw',array('id' => 'cwuser')); ?>
@@ -61,9 +59,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <?php intext("text","useremail","Email del constructor"); ?>
   <div id="enviar"><input type="submit" value="Guardar" name="cwuser"/></div>
 </div>
-
 </form>
 
+<?php echo form_open('cw'); ?>
+<div id="nuevo_modelo">
+<h3>Insertar modelo de impresora</h3>
+  <?php intext("text","model","Nombre del modelo *"); ?>
+  <?php intext("text","modelurl","Web informativa sobre el modelo"); ?>
+  <div id="enviar"><input type="submit" value="Guardar" name="cwmodel"/></div>
+</div>
+</form>
+
+<?php echo form_open('edit'); ?>
+<div id="editar_impresora">
+<h3>Editar una impresora</h3>
+  <?php inlist($printers2, 'printernumber', "Impresora *");?>
+  <div id="enviar"><input type="submit" value="Editar" name="cwmedit"/></div>
+</div>
+</form>
 
 </body>
 </html>

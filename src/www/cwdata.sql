@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 18, 2013 at 02:01 AM
+-- Generation Time: Sep 19, 2013 at 12:18 PM
 -- Server version: 5.5.31
 -- PHP Version: 5.4.4-14+deb7u4
 
@@ -72,6 +72,163 @@ INSERT INTO `impresoras` (`printernumber`, `printername`, `fnacimiento`, `printe
 (1, 'R2D2', '24/12/2011', 'prusa mendel', -9998, 28, 'http://www.iearobotics.com/wiki/index.php?title=Prusa_Mendel:_R2D2', 1, 'Obijuan', '/var/www/cw_big_data/uploads/Prusa-r2d2-clon.jpg'),
 (2, 'Death Star', '17/09/2013', 'prusa mendel', -10000, 28, 'http://www.reprap.org/wiki/Clone_wars:Impresora_Death_Star', 1, 'Fernando Salceda Álvarez', '/var/www/cw_big_data/uploads/Clon-Deathstar_2012-01-07_1-r2.jpg'),
 (3, 'Maese Artorius', '01/01/2012', 'prusa mendel', -10000, 28, 'http://www.reprap.org/wiki/Clone_wars:Impresora_Maese_Artorius', 1, 'Arturo Vera García', '/var/www/cw_big_data/uploads/Clon-maese-artorius.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `models`
+--
+
+CREATE TABLE IF NOT EXISTS `models` (
+  `id` varchar(30) NOT NULL,
+  `human` text NOT NULL,
+  `url` text,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `models`
+--
+
+INSERT INTO `models` (`id`, `human`, `url`) VALUES
+('.1', 'Desconocido', NULL),
+('cupcake', 'Cupcake', NULL),
+('huxley', 'Huxley', NULL),
+('mosaic', 'Makergear Mosaic', NULL),
+('p2', 'Prusa 2', 'http://reprap.org/wiki/Prusa_Mendel_(iteration_2)'),
+('p3_alu', 'Prusa 3 aluminio', 'http://reprap.org/wiki/Clone_wars:_Prusa_iteraci%C3%B3n_3_single_frame'),
+('p3_box', 'Prusa 3 box', 'http://www.reprap.org/wiki/Clone_wars:_Prusa_iteración_3'),
+('portabee', 'PortaBee', NULL),
+('printrbot', 'Printrbot', NULL),
+('printrbot 2', 'Printrbot 2', NULL),
+('printrbot jr', 'Printrbot jr', NULL),
+('printrbot plus', 'Printrbot plus', NULL),
+('printrbot plus lc', 'Printrbot plus LC', NULL),
+('printrbot simple', 'Printrbot simple', NULL),
+('prusa air', 'Prusa Air', NULL),
+('prusa air 2', 'Prusa Air 2', NULL),
+('prusa mendel', 'Prusa Mendel', NULL),
+('prusa mold', 'Prusa Mold', 'http://www.reprap.org/wiki/Clone_wars:_Prusa_Mold'),
+('replicator', 'Makerbot Replicator', NULL),
+('replicator2', 'Makerbot Replicator II', NULL),
+('repstrap', 'RepStrap', NULL),
+('rostock', 'Rostock', 'http://reprap.org/wiki/Rostock'),
+('thingomati', 'Makerbot Thing-o-Matic', 'http://www.makerbot.com/support/thingomatic/'),
+('ultimaker', 'Ultimaker', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `provincias`
+--
+
+CREATE TABLE IF NOT EXISTS `provincias` (
+  `id_provincia` smallint(6) DEFAULT NULL,
+  `provincia` varchar(30) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `provincias`
+--
+
+INSERT INTO `provincias` (`id_provincia`, `provincia`) VALUES
+(2, 'Albacete'),
+(3, 'Alicante/Alacant'),
+(4, 'Almería'),
+(1, 'Araba/Álava'),
+(33, 'Asturias'),
+(5, 'Ávila'),
+(6, 'Badajoz'),
+(7, 'Balears, Illes'),
+(8, 'Barcelona'),
+(48, 'Bizkaia'),
+(9, 'Burgos'),
+(10, 'Cáceres'),
+(11, 'Cádiz'),
+(39, 'Cantabria'),
+(12, 'Castellón/Castelló'),
+(51, 'Ceuta'),
+(13, 'Ciudad Real'),
+(14, 'Córdoba'),
+(15, 'Coruña, A'),
+(16, 'Cuenca'),
+(20, 'Gipuzkoa'),
+(17, 'Girona'),
+(18, 'Granada'),
+(19, 'Guadalajara'),
+(21, 'Huelva'),
+(22, 'Huesca'),
+(23, 'Jaén'),
+(24, 'León'),
+(27, 'Lugo'),
+(25, 'Lleida'),
+(28, 'Madrid'),
+(29, 'Málaga'),
+(52, 'Melilla'),
+(30, 'Murcia'),
+(31, 'Navarra'),
+(32, 'Ourense'),
+(34, 'Palencia'),
+(35, 'Palmas, Las'),
+(36, 'Pontevedra'),
+(26, 'Rioja, La'),
+(37, 'Salamanca'),
+(38, 'Santa Cruz de Tenerife'),
+(40, 'Segovia'),
+(41, 'Sevilla'),
+(42, 'Soria'),
+(43, 'Tarragona'),
+(44, 'Teruel'),
+(45, 'Toledo'),
+(46, 'Valencia/València'),
+(47, 'Valladolid'),
+(49, 'Zamora'),
+(50, 'Zaragoza'),
+(99, 'Otro');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `username` varchar(500) NOT NULL,
+  `userurl` text,
+  `useremail` text,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`username`, `userurl`, `useremail`) VALUES
+('*Desconocido', NULL, NULL),
+('Alberto Valero', '', ''),
+('Alejandro Martín', '', ''),
+('Antonio Campos', '', ''),
+('Arturo Vera García', '', ''),
+('Asimov', '', ''),
+('Asociación de Robótica de la UC3M', 'http://asrob.uc3m.es/', ''),
+('Canarnova - Grupo de creación e innovación tecnológica de Canarias', 'http://canarnova.blogspot.com/', ''),
+('Carlos García Saura', 'http://carlosgs.es/', ''),
+('Carlos Monreal', '', ''),
+('Chris D. McCoy', 'http://www-bsac.eecs.berkeley.edu/~mccoy/', ''),
+('Departamento de Ingeniería de Sistemas y Automática UC3M', 'http://www.uc3m.es/portal/page/portal/dpto_ing_sistemas_automatica', ''),
+('Deutecno, S.L', 'http://www.deutecno.com/index2.html', ''),
+('Fernando Salceda Álvarez', '', ''),
+('Grupo de Displays y Aplicaciones Fotónicas de la UC3M', 'http://www.uc3m.es/portal/page/portal/grupos_investigacion/grupo_displays_aplicaciones_fotonicas', ''),
+('IES Juan de la Cierva', '', ''),
+('IES Virgen de las Nieves, Granada', '', ''),
+('Ivan Blasco', '', ''),
+('Jon Goitia', '', ''),
+('Jose Hevia', '', ''),
+('Miguel Angel de Frutos', '', ''),
+('Miguel Herranz', '', ''),
+('Obijuan', 'http://www.iearobotics.com/wiki/index.php?title=Juan_Gonzalez:Main', ''),
+('RobCib', 'http://www.robcib.etsii.upm.es/', '');
 
 --
 -- Constraints for dumped tables

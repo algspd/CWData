@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       $foto=substr($row->foto,8);
       $this->table->add_row(
         ($row->printernumber>0) ? "#$row->printernumber" : "",
-        (isset($row->printerurl)) ? "<a href=\"$row->printerurl\">$row->printername</a>" : "$row->printername",
+        ($row->printerurl!="") ? "<a href=\"$row->printerurl\">$row->printername</a>" : "$row->printername",
         $row->provincia,
         $row->fnacimiento,
         $row->madre,
