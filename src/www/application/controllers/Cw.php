@@ -16,7 +16,7 @@ class Cw extends CI_Controller {
     foreach ($query->result() as $row){
       $provincias[$row->id_provincia] = $row->provincia;
     }
-
+    
     $query = $this->db->query('SELECT printernumber, printername FROM impresoras');
     $printers = array();
     foreach ($query->result() as $row){
@@ -25,7 +25,7 @@ class Cw extends CI_Controller {
     }
     $printers2=$printers;
     $printers2[-100000]="Seleccionar";
-
+    
     $query = $this->db->query('SELECT username FROM users');
     $users = array();
     foreach ($query->result() as $row){
@@ -39,19 +39,18 @@ class Cw extends CI_Controller {
     $this->load->library('upload', $config);
 
     // Reglas de validación
-    $this->load->library('form_validation');
+    $this->load->library('form_validation');	
     $this->form_validation->set_message('required', 'El campo "%s" es obligatorio');
     $this->form_validation->set_message('is_unique', 'El campo "%s" debe ser único');
     $this->form_validation->set_message('valid_email', 'El campo "%s" debe contener un e-mail');
     $this->form_validation->set_message('numeric', 'El campo "%s" debe contener solo números');
     $this->form_validation->set_message('integer', 'El campo "%s" debe ser un número entero');
-    $this->form_validation->set_message('natural', 'El campo "%s" debe ser un número positivo');
     $this->form_validation->set_message('exact_length', 'La longitud del campo "%s" no es correcta');
     
     if ($this->input->post('cw')){
       $this->form_validation->set_rules('printername', 'Nombre', 'required');
       $this->form_validation->set_rules('printernumber', 'N&uacute;mero',
-        'required|is_unique[impresoras.printernumber]|numeric|integer|natural');
+        'required|is_unique[impresoras.printernumber]|numeric|integer');
       $this->form_validation->set_rules('fnacimiento', 'Fecha de nacimiento','exact_length[10]');
     }
 
