@@ -1,7 +1,15 @@
 body{
   margin-left:20px;
   margin-top:20px;
+  background-color:#009200;
+  color:#EEE;
 }
+a {
+  color:#FFF;
+  /*text-decoration:none;*/
+  font-weight:bold;
+}
+
 #sobre_impresora{
   margin-right:20px;
   padding:20px;
@@ -50,3 +58,4 @@ h5 {
   font-size:12px;
   color:red;
 }
+

@@ -113,15 +113,15 @@ function DrawNode(node, container, options) {
         nodeDiv.ondblclick = options.OnNodeDoubleClick;
 
     nodeDiv.onmouseover = function () { // In
-        this.PrevClassName = this.className;
-        this.className = "NodeHover";
+        //this.PrevClassName = this.className;
+        //this.className = "NodeHover";
     };
 
     nodeDiv.onmouseout = function () { // Out
-        if (this.PrevClassName) {
-            this.className = this.PrevClassName;
-            this.PrevClassName = null;
-        }
+        //if (this.PrevClassName) {
+        //    this.className = this.PrevClassName;
+        //    this.PrevClassName = null;
+        //}
     };
 
     container.appendChild(nodeDiv);
@@ -136,10 +136,10 @@ function DrawNode(node, container, options) {
 
 function PerformLayoutV(node) {
 
-    var nodeHeight = 30;
-    var nodeWidth = 100;
-    var nodeMarginLeft = 50;
-    var nodeMarginTop = 30;
+    var nodeHeight = 100;
+    var nodeWidth = 150;
+    var nodeMarginLeft = 35;
+    var nodeMarginTop = 10;
 
     var nodeTop = 0; // defaultValue 
 
