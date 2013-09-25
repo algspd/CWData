@@ -50,7 +50,7 @@ class Cw extends CI_Controller {
     if ($this->input->post('cw')){
       $this->form_validation->set_rules('printername', 'Nombre', 'required');
       $this->form_validation->set_rules('printernumber', 'N&uacute;mero',
-        'required|is_unique[impresoras.printernumber]|numeric|integer');
+        'required|is_unique[impresoras.printernumber]|numeric');
       $this->form_validation->set_rules('fnacimiento', 'Fecha de nacimiento','exact_length[10]');
     }
 
@@ -80,6 +80,13 @@ class Cw extends CI_Controller {
       if ($this->input->post('cw') && $this->upload->do_upload("foto")){
         // Si se trata de una impresora y se ha podido subir la foto
         $data = $this->upload->data();
+        // Generar thumbnail
+        $file=$data['full_path'];
+        $foto_a=explode('/',$file);
+        $filename=$foto_a[sizeof($foto_a)-1];
+        $path=str_replace($filename,"",$file);
+        exec ("convert -resize 70x70 $file $path/thumb_$filename");
+
         $printer = array(
           'printernumber'   => $this->input->post('printernumber'),
           'printername'     => $this->input->post('printername'),

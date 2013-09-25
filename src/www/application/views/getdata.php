@@ -36,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           $curr="$last.Nodes[$branch]";
           $foto_a=explode('/',$row->foto);
           $foto=$foto_a[sizeof($foto_a)-1];
-          echo "$curr={ Content: \"$row->printername</br><img class=\\\"foto\\\" src=\\\"uploads/$foto\\\"/>\" };\n";
+          echo "$curr={ Content: \"$row->printername</br><img class=\\\"foto\\\" src=\\\"uploads/thumb_$foto\\\"/>\" };\n";
           echo "$curr.Nodes=new Array();\n";
           genPrinter($db,$row->printernumber,$curr,$branch++);
         }

@@ -67,7 +67,7 @@ class Edit extends CI_Controller {
     $this->form_validation->set_message('exact_length', 'La longitud del campo "%s" no es correcta');
     if ($this->input->post('cw_save_changes') ){
       $this->form_validation->set_rules('printername', 'Nombre', 'required');
-      $this->form_validation->set_rules('printernumber', 'N&uacute;mero','required|numeric|integer');
+      $this->form_validation->set_rules('printernumber', 'N&uacute;mero','required|numeric');
       $this->form_validation->set_rules('fnacimiento', 'Fecha de nacimiento','exact_length[10]');
     }
 
@@ -89,8 +89,14 @@ class Edit extends CI_Controller {
       );
 
       if ($this->upload->do_upload("foto")){
-        // Si el usuario ha agregado una nueva foto
         $data = $this->upload->data();
+        // Generar thumbnail
+        $file=$data['full_path'];
+        $foto_a=explode('/',$file);
+        $filename=$foto_a[sizeof($foto_a)-1];
+        $path=str_replace($filename,"",$file);
+        exec ("convert -resize 70x70 $file $path/thumb_$filename");
+        // Si el usuario ha agregado una nueva foto
         $printer['foto'] = $data['full_path'];
       }
       $this->db->where('printernumber', $this->input->post('printernumber'));
