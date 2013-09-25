@@ -18,7 +18,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     $this->table->set_heading(array("#","Nombre","Provincia","Fecha nacimiento","Madre","Modelo","Foto"));
     $this->table->set_template(array('table_open'=> '<table border="1" cellpadding="4" cellspacing="0">',));
     foreach ($query->result() as $row){
-      $foto=substr($row->foto,8);
+      $foto2=substr($row->foto,29);
+      $foto=substr($row->foto,20);
       $this->table->add_row(
         ($row->printernumber>0) ? "#$row->printernumber" : "",
         ($row->printerurl!="") ? "<a href=\"$row->printerurl\">$row->printername</a>" : "$row->printername",
@@ -26,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $row->fnacimiento,
         $row->madre,
         $row->human,
-        (isset($row->foto)) ? "<a href=\"$foto\">$foto</a>" : ""
+        (isset($row->foto)) ? "<a href=\"$foto\" target=\"_blank\">$foto2</a>" : ""
       );
     }
     echo $this->table->generate();

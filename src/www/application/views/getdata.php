@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
     echo "
     var rootNode = new Object();
-        rootNode.Content = [\"Clone Wars\"];
+        rootNode.Content = [\"Clone Wars<br/><br/><img class=\\\"foto\\\" src=\\\"/logo.png\\\">\"];
         rootNode.Nodes = new Array();
     ";
 
