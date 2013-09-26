@@ -22,7 +22,7 @@ class View extends CI_Controller {
 	{
           $this->load->database();
           $this->load->library('table');
-          $query = $this->db->query('SELECT hijas.printernumber,hijas.printername,provincia,hijas.fnacimiento,madres.printername AS madre,hijas.printerurl,human,hijas.foto FROM impresoras AS hijas LEFT JOIN impresoras AS madres ON madres.printernumber=hijas.printermother LEFT JOIN models ON models.id=hijas.printermodel LEFT JOIN users ON hijas.username=users.username LEFT JOIN provincias ON provincias.id_provincia=hijas.printerlocation');
+          $query = $this->db->query('SELECT hijas.printernumber,hijas.printername,provincia,hijas.fnacimiento,madres.printername AS madre,hijas.printerurl, human,hijas.foto FROM impresoras AS hijas LEFT JOIN impresoras AS madres ON madres.printernumber=hijas.printermother LEFT JOIN models ON models.id=hijas.printermodel LEFT JOIN users ON hijas.username=users.username LEFT JOIN provincias ON provincias.id_provincia=hijas.printerlocation');
 
           $data=array(
             'query' => $query,
