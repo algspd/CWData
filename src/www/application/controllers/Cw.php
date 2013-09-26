@@ -34,7 +34,7 @@ class Cw extends CI_Controller {
     $this->load->helper(array('form', 'url'));
     $this->load->helper('date');
 
-    $config['upload_path'] = './uploads/';
+    $config['upload_path'] = '/var/www/CWData/src/www/uploads/';
     $config['allowed_types'] = 'gif|jpg|png';
     $this->load->library('upload', $config);
 
@@ -134,6 +134,8 @@ class Cw extends CI_Controller {
         // Si la foto estaba vacía o ha habido algún problema con ella
         $nofoto="El campo \"Foto\" es obligatorio<br/>";
         $viewdata['nofoto'] = $nofoto;
+        //$error=$this->upload->display_errors();
+        //echo "Error: $error";
         $this->load->view('cw_view',$viewdata);
       }
     }

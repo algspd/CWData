@@ -17,10 +17,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 <div id="cabecera">
-<img src="logo.png" alt="logo" style="width:200px;"/><br/>
+<img src="logo.png" alt="logo" style="width:200px;margin-left:28px;"/><br/>
+<a style="font-size:17px;text-decoration:none;" href="malto://info@maytheclonebewithyou.com">info@mayTheCloneBeWithYou.com</a>
 <ul style="margin-left:-30px;">
 <li><a href="index.php/cw">Insertar o modificar una impresora</a></br></li>
-<li><a href="index.php/view">Ver datos en una tabla</a></li></ul>
+<li><a href="index.php/view">Ver datos en una tabla</a></li>
+</ul>
 </div>
   <div id="dvTreeContainer"></div>
   <script type="text/javascript">
