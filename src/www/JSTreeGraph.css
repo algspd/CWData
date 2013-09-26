@@ -3,6 +3,11 @@
   max-height:70px;
 }
 
+.foto_raiz{
+  margin-top:11px;
+  max-width:130px;
+}
+
 
 #dvTreeContainer {
   left:-40px;
