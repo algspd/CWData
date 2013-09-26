@@ -25,6 +25,7 @@ class Cw extends CI_Controller {
     }
     $printers2=$printers;
     $printers2[-100000]="Seleccionar";
+    unset($printers2[-99999]);
     
     $query = $this->db->query('SELECT username FROM users');
     $users = array();
