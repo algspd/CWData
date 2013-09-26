@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html>
 <head>
+  <link rel="SHORTCUT ICON" HREF="/favicon.png">
 <?php
   $this->load->helper('html','date');
   echo link_tag('css/style.css');

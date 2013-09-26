@@ -3,7 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>CWData</title>
+  <link href="/favicon.ico" rel="icon" type="image/x-icon" />
   <link href="JSTreeGraph.css" rel="stylesheet" type="text/css" />
   <script src="JSTreeGraph.js" type="text/javascript"></script>
 <?php
