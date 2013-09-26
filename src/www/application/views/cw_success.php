@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html>
 <head>
+  <link href="/favicon.ico" rel="icon" type="image/x-icon" />
 <?php
   $this->load->helper('html');
   echo link_tag('css/style.css');
