@@ -34,15 +34,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       
       $branch=0;
       foreach ($impresoras->result() as $row){
+        $numero="";
+        if ($row->printernumber>0) $numero="#$row->printernumber ";
         if ($row->printernumber!=-100000){
           //echo "     Debug: $last\n";
           $curr="$last.Nodes[$branch]";
           $foto_a=explode('/',$row->foto);
           $foto=$foto_a[sizeof($foto_a)-1];
           if ($row->printerurl!=""){
-            echo "$curr={ Content: \"<a href=\\\"$row->printerurl\\\" target=\\\"_blank\\\">#$row->printernumber $row->printername</br><img class=\\\"foto\\\" src=\\\"uploads/thumb_$foto\\\"/></a>\" };\n";
+            echo "$curr={ Content: \"<a href=\\\"$row->printerurl\\\" target=\\\"_blank\\\">$numero $row->printername</br><img class=\\\"foto\\\" src=\\\"uploads/thumb_$foto\\\"/></a>\" };\n";
           } else{
-            echo "$curr={ Content: \"#$row->printernumber $row->printername</br><img class=\\\"foto\\\" src=\\\"uploads/thumb_$foto\\\"/>\" };\n";
+            echo "$curr={ Content: \"$numero $row->printername</br><img class=\\\"foto\\\" src=\\\"uploads/thumb_$foto\\\"/>\" };\n";
           }
           echo "$curr.Nodes=new Array();\n";
           genPrinter($db,$row->printernumber,$curr,$branch++);
