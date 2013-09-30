@@ -43,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <?php intext("text","printernumber","N&uacute;mero *"); ?>
   <?php intext("text","fnacimiento","Fecha de nacimiento (dd/mm/aaaa)", mdate($datestring, $time)); ?>
   <?php inlist($models, 'printermodel', "Modelo *");?>
-  <?php if (! isset($nofoto)) $nofoto=""; infile("foto","Foto (La foto debería tener <a href=\"#\">este aspecto</a>)</h5>", $nofoto); ?>
+  <?php if (! isset($nofoto)) $nofoto=""; infile("foto","Foto (La foto debería tener <a href=\"/muestra.jpg\" target=\"_blank\">este aspecto</a>)</h5>", $nofoto); ?>
   <?php inlist($printers, 'printermother', "Impresora madre *");?>
   <?php inlist($provincias,"printerlocation","Localizaci&oacute;n"); ?>
   <?php intext("text","printerurl","Web"); ?>
