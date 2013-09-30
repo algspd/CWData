@@ -22,6 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <a style="font-size:17px;text-decoration:none;" href="malto://info@maytheclonebewithyou.com">info@mayTheCloneBeWithYou.com</a>
 <ul style="margin-left:-30px;">
 <li><a href="index.php/cw">Insertar o modificar una impresora</a></br></li>
+<li><a href="index.php/wiki">Ver datos como en la wiki</a></li>
 <li><a href="index.php/view">Ver datos en una tabla</a></li>
 </ul>
 </div>
