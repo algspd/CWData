@@ -23,12 +23,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <br/><br/><span style="font-size:17px;">Número de impresoras: <?php echo $query->num_rows()-2; ?></span>
 
-<ul style="margin-left:-30px;">
-<li><a href="index.php/cw">Insertar o modificar una impresora</a></br></li>
-<li><a href="index.php/wiki">Ver datos como en la wiki</a></li>
-<li><a href="index.php/view">Ver datos en una tabla</a></li>
-<li><a href="https://github.com/algspd/CWData">GitHub del proyecto</a></li>
-</ul>
+<div id="menu" style="position:absolute;top:20px;right:20px;">
+<a href="index.php/cw">Añadir</a> | 
+<a href="index.php/wiki">Vista wiki</a> |
+<a href="index.php/view">Vista tabla</a> |
+<a href="https://github.com/algspd/CWData">GitHub</a>
+</div>
 </div>
   <div id="dvTreeContainer"></div>
   <script type="text/javascript">
