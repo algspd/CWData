@@ -23,10 +23,18 @@ class Stats extends CI_Controller {
           $this->load->database();
           $this->load->library('table');
           $bymodel = $this->db->query('SELECT human,count(printermodel) AS num FROM impresoras LEFT JOIN models ON impresoras.printermodel=models.id GROUP BY printermodel ORDER BY num DESC');
+          $byplace = $this->db->query('
+            SELECT p.provincia,count(printerlocation) AS num
+            FROM provincias AS p
+            LEFT OUTER JOIN impresoras AS i
+            ON i.printerlocation=p.id_provincia
+            GROUP BY provincia
+            ORDER BY num DESC');
 
           $data=array(
             'db'    => $this->db,
             'bymodel' => $bymodel,
+            'byplace' => $byplace,
           );
                     
 
