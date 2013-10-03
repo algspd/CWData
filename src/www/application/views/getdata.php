@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+include 'common.php';
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -23,12 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <br/><br/><span style="font-size:17px;">Número de impresoras: <?php echo $query->num_rows()-2; ?></span>
 
-<div id="menu" style="position:absolute;top:20px;right:20px;">
-<a href="index.php/cw">Añadir</a> | 
-<a href="index.php/wiki">Vista wiki</a> |
-<a href="index.php/view">Vista tabla</a> |
-<a href="https://github.com/algspd/CWData">GitHub</a>
-</div>
+<?php menu(); ?>
 </div>
   <div id="dvTreeContainer"></div>
   <script type="text/javascript">

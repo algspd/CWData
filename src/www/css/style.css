@@ -59,3 +59,26 @@ h5 {
   color:red;
 }
 
+#menu{
+  position:absolute;
+  top:20px;
+  right:40px;
+  width:100px;
+}
+
+    #menu div.submenu {
+      display: none;
+      position: absolute;
+      left:0px;
+      padding: 10px;
+      z-index: 90; 
+      width:100%;
+    }   
+    #menu div.menu:hover{
+      background-color:#007700;
+    }
+    #menu div:hover div.submenu {
+      display: block;
+      border-left: 1px solid #ececec;
+    } 
+    #menu div {float:left;}

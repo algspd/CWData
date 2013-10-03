@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div id="sobre_impresora">
 <h3>Sobre la impresora</h3>
   <?php intext("text","printername","Nombre *"); ?>
-  <?php intext("text","printernumber","N&uacute;mero *"); ?>
+  <?php intext("text","printernumber","N&uacute;mero * (el número por defecto es el siguiente)", $printermax); ?>
   <?php intext("text","fnacimiento","Fecha de nacimiento (dd/mm/aaaa)", mdate($datestring, $time)); ?>
   <?php inlist($models, 'printermodel', "Modelo *");?>
   <?php if (! isset($nofoto)) $nofoto=""; infile("foto","Foto (La foto debería tener <a href=\"/muestra.jpg\" target=\"_blank\">este aspecto</a>)</h5>", $nofoto); ?>

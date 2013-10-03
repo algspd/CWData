@@ -32,6 +32,13 @@ class Cw extends CI_Controller {
     foreach ($query->result() as $row){
       $users[$row->username] = $row->username;
     }
+    // Obtener el número máximo de impresora
+    $this->db->select_max('printernumber','max');
+    $query = $this->db->get('impresoras');
+    $row=$query->row();
+    $printermax=$row->max;
+
+    $this->load->helper(array('form', 'url'));
     $this->load->helper(array('form', 'url'));
     $this->load->helper('date');
 
@@ -70,6 +77,7 @@ class Cw extends CI_Controller {
       'printers' => $printers,
       'printers2' => $printers2,
       'users' => $users,
+      'printermax' => $printermax,
     );
 
     // Validacion
