@@ -11,21 +11,14 @@ include 'common.php';
 <?php
   $this->load->helper('html');
   $this->load->helper('date');
-  
   echo link_tag('css/style.css');
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>CW Data</title>
 </head>
 <body>
-<div id="cabecera">
-<img src="logo.png" alt="logo" style="width:200px;margin-left:28px;"/><br/>
-<a style="font-size:17px;text-decoration:none;" href="malto://info@maytheclonebewithyou.com">info@mayTheCloneBeWithYou.com</a>
-
+<?php head(); ?>
 <br/><br/><span style="font-size:17px;">Número de impresoras: <?php echo $query->num_rows()-2; ?></span>
-
-<?php menu(); ?>
-</div>
   <div id="dvTreeContainer"></div>
   <script type="text/javascript">
   <?php

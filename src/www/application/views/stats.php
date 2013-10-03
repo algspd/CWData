@@ -16,14 +16,7 @@ include 'common.php';
 <title>CW Data :: stats</title>
 </head>
 <body>
-<div id="cabecera">
-<img src="/logo.png" alt="logo" style="width:200px;margin-left:28px;"/><br/>
-<a style="font-size:17px;text-decoration:none;" href="malto://info@maytheclonebewithyou.com">info@mayTheCloneBeWithYou.com</a>
-
-<br/><br/>
-
-<?php menu(); ?>
-</div>
+<?php head(); ?>
 
   <div id="stats">
 

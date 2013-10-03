@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+include 'common.php';
+?>
+<!DOCTYPE html>
 <html>
 <head>
   <link href="/favicon.ico" rel="icon" type="image/x-icon" />
@@ -16,6 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
   <?php
+    head();
     $this->table->set_heading(array("#","Nombre","Provincia","Fecha nacimiento","Madre","Modelo","Foto"));
     $this->table->set_template(array('table_open'=> '<table border="1" cellpadding="4" cellspacing="0">',));
     foreach ($query->result() as $row){

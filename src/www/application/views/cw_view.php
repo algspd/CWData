@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+include 'common.php';
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <?php
+  head();
   function intext($type, $name, $text, $defval=""){
     echo "<h5>$text</h5>";
     $error=form_error($name);
