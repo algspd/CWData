@@ -36,7 +36,7 @@ class Cw extends CI_Controller {
     $this->db->select_max('printernumber','max');
     $query = $this->db->get('impresoras');
     $row=$query->row();
-    $printermax=$row->max;
+    $printermax=$row->max+1;
 
     $this->load->helper(array('form', 'url'));
     $this->load->helper(array('form', 'url'));
