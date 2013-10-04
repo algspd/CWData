@@ -24,7 +24,7 @@ include 'common.php';
   <?php
     function genPrinter($db,$printernumber,$last,$branch){
 
-      $impresoras=$db->query("SELECT printernumber,printername,printerurl,foto FROM impresoras WHERE printermother=\"$printernumber\"");
+      $impresoras=$db->query("SELECT printernumber,printername,printerurl,foto,printeralive FROM impresoras WHERE printermother=\"$printernumber\"");
       
       $branch=0;
       foreach ($impresoras->result() as $row){
@@ -36,7 +36,10 @@ include 'common.php';
           $foto_a=explode('/',$row->foto);
           $foto=$foto_a[sizeof($foto_a)-1];
           if ($row->printerurl!=""){
-            echo "$curr={ Content: \"<a href=\\\"$row->printerurl\\\" target=\\\"_blank\\\">$numero $row->printername</br><img class=\\\"foto\\\" src=\\\"uploads/thumb_$foto\\\"/></a>\" };\n";
+            $RIP="";
+            if ($row->printeralive==0) $RIP="R.I.P";
+
+            echo "$curr={ Content: \"<a href=\\\"$row->printerurl\\\" target=\\\"_blank\\\">$numero $row->printername</br><img class=\\\"foto\\\" src=\\\"uploads/thumb_$foto\\\"/><br/><span style=\\\"text-decoration:none;display:inline;position:relative;bottom:25px;color:red;font-size:20px;\\\">$RIP</span></a>\" };\n";
           } else{
             echo "$curr={ Content: \"$numero $row->printername</br><img class=\\\"foto\\\" src=\\\"uploads/thumb_$foto\\\"/>\" };\n";
           }
