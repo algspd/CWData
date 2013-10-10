@@ -12,6 +12,11 @@ include 'common.php';
 <?php
 head();
 ?>
+
+<div style="position:absolute;top:200px;right:30px;">
+  <a href="#"><img src="/arb_c.jpg" alt="Arbol circular" style="width:140px;" /></a>
+</div>
+
 <br/><br/><span style="font-size:17px;">Número de impresoras: <?php
 echo $query->num_rows() - 2;
 ?></span><br/>
