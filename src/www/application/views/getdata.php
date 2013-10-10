@@ -5,6 +5,7 @@ include 'common.php';
 <html>
 <head>
   <title>CWData</title>
+  <?php metas(); ?>
   <link href="/favicon.ico" rel="icon" type="image/x-icon" />
   <link href="JSTreeGraph.css" rel="stylesheet" type="text/css" />
   <script src="JSTreeGraph.js" type="text/javascript"></script>

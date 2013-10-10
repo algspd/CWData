@@ -1,11 +1,26 @@
 <?php
+function metas(){
+?>
+<meta name="keywords" content="reprap, rep, rap, clon, arbol, genealogico, genealogía, clonewars, clone, clones">
+<meta http-equiv="keywords" content"reprap, rep, rap, clon, arbol, genealogico, genealogía, clonewars, clone, clones">
+
+
+<?php
+}
+?>
+
+
+
+<?php
 function menu() {
 ?>
 <div id="menu">
   <div class="menu">
-    <a href="#">Data</a> |&nbsp; 
+    <a href="/index.php/cw">Añadir</a> |&nbsp;
+  </div>
+  <div class="menu">
+    <a href="#">Datos</a> |&nbsp; 
     <div class="submenu">
-      <a href="/index.php/cw">Añadir</a><br/>
       <a href="/index.php/stats">Stats</a><br/>
       <a href="/index.php/wiki">Vista wiki</a><br/>
       <a href="/index.php/view">Vista tabla</a>
