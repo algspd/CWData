@@ -74,6 +74,7 @@ h5 {
   top:20px;
   right:40px;
   width:140px;
+  z-index:3;
 }
 
     #menu div.submenu {

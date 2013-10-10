@@ -1,17 +1,4 @@
 <?php
-function metas(){
-?>
-<meta name="keywords" content="reprap, rep, rap, clon, arbol, genealogico, genealogía, clonewars, clone, clones">
-<meta http-equiv="keywords" content"reprap, rep, rap, clon, arbol, genealogico, genealogía, clonewars, clone, clones">
-
-
-<?php
-}
-?>
-
-
-
-<?php
 function menu() {
 ?>
 <div id="menu">
@@ -19,9 +6,10 @@ function menu() {
     <a href="/index.php/cw">Añadir</a> |&nbsp;
   </div>
   <div class="menu">
-    <a href="#">Datos</a> |&nbsp; 
+    <a href="#">Vistas</a> |&nbsp; 
     <div class="submenu">
       <a href="/index.php/stats">Stats</a><br/>
+      <a href="/index.php/get2">Arbol circular</a><br/>
       <a href="/index.php/wiki">Vista wiki</a><br/>
       <a href="/index.php/view">Vista tabla</a>
     </div>
@@ -43,9 +31,9 @@ function menu() {
 <?php
 function head() {
 ?>
-<div id="cabecera">
-<a href="/"><img src="/logo.png" alt="logo" style="width:200px;margin-left:28px;"/></a><br/>
-<a style="font-size:17px;text-decoration:none;" href="malto://info@maytheclonebewithyou.com">info@mayTheCloneBeWithYou.com</a>
+<div id="cabecera" style="z-index:4;">
+<a href="/" style="z-index:3;"><img src="/logo.png" alt="logo" style="width:200px;margin-left:28px;z-index:3;"/></a><br/>
+<a style="font-size:17px;text-decoration:none;z-index:3;" href="malto://info@maytheclonebewithyou.com">info@mayTheCloneBeWithYou.com</a>
 <?php
     menu();
 ?>

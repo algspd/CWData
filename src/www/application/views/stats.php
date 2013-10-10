@@ -4,7 +4,7 @@ include 'common.php';
 ?><!DOCTYPE html>
 <html>
 <head>
-  <title>CWData</title>
+  <title>Estadísticas</title>
   <link href="/favicon.ico" rel="icon" type="image/x-icon" />
 <?php
   $this->load->helper('html');

@@ -1,42 +1,35 @@
 <?php
-
-
-    function genPrinter($db,$printernumber,$last,$branch){
-
-      $impresoras=$db->query("SELECT printernumber,printername,printerurl,foto,printeralive FROM impresoras WHERE printermother=\"$printernumber\"");
-      
-      $branch=0;
-      $primera=true;
-      foreach ($impresoras->result() as $row){
-        if (!$primera) echo ",\n";
-        $primera=false;
-
-        $numero="";
-        if ($row->printernumber>0) $numero="#$row->printernumber ";
-        if ($row->printernumber!=-100000){
-          $curr="$last.Nodes[$branch]";
-          $foto_a=explode('/',$row->foto);
-          $foto=$foto_a[sizeof($foto_a)-1];
+function genPrinter2($db, $printernumber, $last, $branch) {
+    $impresoras = $db->query("SELECT printernumber,printername,printerurl,foto,printeralive FROM impresoras WHERE printermother=\"$printernumber\"");
+    $branch     = 0;
+    $primera    = true;
+    foreach ($impresoras->result() as $row) {
+        if (!$primera)
+            echo ",\n";
+        $primera = false;
+        $numero  = "";
+        if ($row->printernumber > 0)
+            $numero = "#$row->printernumber ";
+        if ($row->printernumber != -100000) {
+            $curr   = "$last.Nodes[$branch]";
+            $foto_a = explode('/', $row->foto);
+            $foto   = $foto_a[sizeof($foto_a) - 1];
             echo "{\"name\": \"$numero $row->printername\", \"size\": 3000, \n";
-          echo "\"children\": [";
-          genPrinter($db,$row->printernumber,$curr,$branch++);
-          echo "]}";
-        }
-        else $primera=true;
-      }
+            echo "\"children\": [";
+            genPrinter2($db, $row->printernumber, $curr, $branch++);
+            echo "]}";
+        } else
+            $primera = true;
     }
-
-    ob_start();
-    echo "{\n\"name\": \"CW\",\n\"children\" : [";
-    genPrinter($db,"-100000","rootNode",0);
-    echo "]}";
-    $contents = ob_get_contents();
-    ob_end_clean();
-    file_put_contents("/var/www/CWData/src/www/flare.json",$contents);
-
-
+}
+ob_start();
+echo "{\n\"name\": \"CW\",\n\"children\" : [";
+genPrinter2($db, "-100000", "rootNode", 0);
+echo "]}";
+$contents = ob_get_contents();
+ob_end_clean();
+file_put_contents("/var/www/CWData/src/www/flare.json", $contents);
 ?>
-
 
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -46,17 +39,13 @@ include 'common.php';
   <title>CWData</title>
   <link href="/favicon.ico" rel="icon" type="image/x-icon" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <?php
-    $this->load->helper('html');
-    $this->load->helper('date');
-    echo link_tag('css/style.css');
-  ?>
+  <link href="/css/style.css" rel="stylesheet" type="text/css" />
   <style>
 
 .node circle {
-  fill: #fff;
-  stroke: steelblue;
-  stroke-width: 1.5px;
+  fill: #00DD00;
+  stroke: #004400;
+  stroke-width: 1px;
 }
 
 .node {
@@ -65,17 +54,30 @@ include 'common.php';
 
 .link {
   fill: none;
-  stroke: #ccc;
+  stroke: #002200;
   stroke-width: 1.5px;
+}
+
+.node text {
+  fill:#E9E9E9;
+  font-size:10px;
+}
+
+svg {
+  position:absolute;
+  top:-150px;
+  left:-300px;
+  z-index:-10;
 }
 
   </style>
 </head>
 <body>
+<?php head(); ?>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
-var diameter = 1300;
+var diameter = 1800;
 
 var tree = d3.layout.tree()
     .size([360, diameter / 2 - 120])

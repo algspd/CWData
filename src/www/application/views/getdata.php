@@ -1,22 +1,12 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
 include 'common.php';
 ?><!DOCTYPE html>
 <html>
 <head>
-  <title>CWData</title>
-  <?php metas(); ?>
+  <title>Árbol de los clones</title>
   <link href="/favicon.ico" rel="icon" type="image/x-icon" />
-  <link href="JSTreeGraph.css" rel="stylesheet" type="text/css" />
-  <script src="JSTreeGraph.js" type="text/javascript"></script>
-  <script src="treesetup.js" type="text/javascript"></script>
-<?php
-$this->load->helper('html');
-$this->load->helper('date');
-echo link_tag('css/style.css');
-?>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>CW Data</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>CW Data</title>
 </head>
 <body>
 <?php
@@ -43,6 +33,12 @@ echo $query->num_rows() - 2;
   <?php
     treeData($db);
   ?>
+  </script>
+
+  <script src="JSTreeGraph.js" type="text/javascript"></script>
+  <script src="treesetup.js" type="text/javascript"></script>
+
+  <script type="text/javascript">
        var container = document.getElementById("dvTreeContainer");
 
         // Build tree with options
@@ -56,5 +52,7 @@ echo $query->num_rows() - 2;
 
   </script>
 
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="JSTreeGraph.css" rel="stylesheet" type="text/css" />
 </body>
 </html>
