@@ -5,9 +5,9 @@
 
     // Calculate Boxes Positions
     if (options.Layout == "Vertical") {
-        PerformLayoutV(options.RootNode);
+        PerformLayoutV(options.RootNode,options);
     } else {
-        PerformLayoutH(options.RootNode);
+        PerformLayoutH(options.RootNode,options);
     }
 
     // Draw Boxes
@@ -134,9 +134,10 @@ function DrawNode(node, container, options) {
     }
 }
 
-function PerformLayoutV(node) {
+function PerformLayoutV(node,options) {
 
-    var nodeHeight = 100;
+    var nodeHeight = options.Height;
+    //var nodeHeight = 100;
     var nodeWidth = 150;
     var nodeMarginLeft = 35;
     var nodeMarginTop = 10;
@@ -146,7 +147,7 @@ function PerformLayoutV(node) {
     // Before Layout this Node, Layout its children
     if ((!node.Collapsed) && node.Nodes && node.Nodes.length > 0) {
         for (var i = 0; i < node.Nodes.length; i++) {
-            PerformLayoutV(node.Nodes[i]);
+            PerformLayoutV(node.Nodes[i],options);
         }
     }
 
@@ -191,10 +192,10 @@ function PerformLayoutV(node) {
     node.ParentConnectorPoint = { X: pointX, Y: pointY, Layout: "Vertical" };
 }
 
-function PerformLayoutH(node) {
+function PerformLayoutH(node,options) {
 
-    var nodeHeight = 30;
-    var nodeWidth = 100;
+    var nodeHeight = options.Height;//30;
+    var nodeWidth = 140;
     var nodeMarginLeft = 30;
     var nodeMarginTop = 50;
 
@@ -203,7 +204,7 @@ function PerformLayoutH(node) {
     // Before Layout this Node, Layout its children
     if ((!node.Collapsed) && node.Nodes && node.Nodes.length>0) {
         for (var i = 0; i < node.Nodes.length; i++) {
-            PerformLayoutH(node.Nodes[i]);
+            PerformLayoutH(node.Nodes[i],options);
         }
     }
 
