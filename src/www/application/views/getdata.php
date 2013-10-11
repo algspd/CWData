@@ -14,7 +14,10 @@ head();
 ?>
 
 <div style="position:absolute;top:200px;right:30px;">
-  <a href="#"><img src="/arb_c.jpg" alt="Arbol circular" style="width:140px;" /></a>
+  <a href="/index.php/get2"><img src="/arb_c.jpg" alt="Arbol circular" style="width:140px;" /></a>
+</div>
+<div style="position:absolute;top:360px;right:30px;">
+  <a href="/index.php/circles"><img src="/circulos.jpg" alt="Arbol circular" style="width:140px;" /></a>
 </div>
 
 <br/><br/><span style="font-size:17px;">Número de impresoras: <?php
