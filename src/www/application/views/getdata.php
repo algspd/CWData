@@ -19,7 +19,9 @@ head();
 <div style="position:absolute;top:360px;right:30px;">
   <a href="/index.php/circles"><img src="/circulos.jpg" alt="Arbol circular" style="width:140px;" /></a>
 </div>
-
+<div style="position:absolute;top:520px;right:30px;">
+  <a href="/index.php/nofoto"><img src="/prusadordelfrac.png" alt="Prusador del frac" style="width:140px;" /></a>
+</div>
 <br/><br/><span style="font-size:17px;">Número de impresoras: <?php
 echo $query->num_rows() - 2;
 ?></span><br/>
