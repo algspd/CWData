@@ -1,7 +1,10 @@
 <?php
 function menu() {
 ?>
+<br/>
+<br/>
 <div id="menu">
+
   <div class="menu">
     <a href="/index.php/cw">Añadir</a> |&nbsp;
   </div>
@@ -10,6 +13,7 @@ function menu() {
     <div class="submenu">
       <a href="/index.php/stats">Stats</a><br/>
       <a href="/index.php/get2">Arbol circular</a><br/>
+      <a href="/index.php/timeline">Linea de tiempo</a><br/>
       <a href="/index.php/wiki">Vista wiki</a><br/>
       <a href="/index.php/view">Vista tabla</a>
       <a href="/index.php/nofoto">Impresoras sin foto</a>
@@ -20,6 +24,7 @@ function menu() {
     <div class="submenu">
       <a href="http://www.reprap.org/wiki/Clone_Wars:_El_imperio_de_los_clones/es" target="_blank">Raw</a><br/>
       <a href="https://github.com/algspd/CWData" target="_blank">GitHub</a><br/>
+      <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=M7J9NQ98K9C8E&lc=ES&item_name=May%20The%20Clone%20Be%20With%20You&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted">Donar</a><br/>
       <a href="malto://info@maytheclonebewithyou.com">Mail</a>
     </div>
   </div>
