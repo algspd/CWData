@@ -13,7 +13,6 @@ include 'common.php';
   echo link_tag('css/style.css');
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>CW Data :: stats</title>
 </head>
 <body>
 <?php head(); ?>
