@@ -17,6 +17,7 @@ function menu() {
       <a href="/index.php/wiki">Vista wiki</a><br/>
       <a href="/index.php/view">Vista tabla</a>
       <a href="/index.php/nofoto">Impresoras sin foto</a>
+      <a href="/index.php/csv">Exportar a csv</a>
     </div>
   </div>
   <div class="menu">
