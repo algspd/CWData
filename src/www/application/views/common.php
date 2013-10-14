@@ -69,7 +69,7 @@ function genPrinter($db, $printernumber, $last, $branch) {
                 if ($row->printeralive == 0)
                     $RIP = "R.I.P";
                 
-                echo "$curr={ Content: \"<a href=\\\"$row->printerurl\\\" target=\\\"_blank\\\">$numero $row->printername</br><img class=\\\"foto\\\" src=\\\"uploads/thumb_$foto\\\"/><br/><span style=\\\"text-decoration:none;display:inline;position:relative;bottom:25px;color:red;font-size:20px;\\\" class=\\\"texto_rip\\\">$RIP</span></a>\" };\n";
+                echo "$curr={ Content: \"<a href=\\\"" . linkify($row->printerurl) . "\\\" target=\\\"_blank\\\">$numero $row->printername</br><img class=\\\"foto\\\" src=\\\"uploads/thumb_$foto\\\"/><br/><span style=\\\"text-decoration:none;display:inline;position:relative;bottom:25px;color:red;font-size:20px;\\\" class=\\\"texto_rip\\\">$RIP</span></a>\" };\n";
             } else {
                 echo "$curr={ Content: \"$numero $row->printername</br><img class=\\\"foto\\\" src=\\\"uploads/thumb_$foto\\\"/>\" };\n";
             }
@@ -90,3 +90,12 @@ function treeData($db) {
 }
 
 ?> 
+
+<?php
+function linkify($link){
+$link = str_replace(array("\r", "\n"), '', trim($link));
+if (!preg_match('/^https?:\/\//', $link)) {
+    $link = 'http://'.$link;
+}
+return $link;
+}
