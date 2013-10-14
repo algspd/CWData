@@ -5,17 +5,22 @@ include 'common.php';
 <html>
 <head>
   <link href="/favicon.ico" rel="icon" type="image/x-icon" />
-<?php
-  $this->load->helper('html','date');
-  echo link_tag('css/style.css');
-?>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Añadir impresora</title>
+  <link type="text/css" rel="stylesheet" href="/css/style.css">
+  <link type="text/css" rel="stylesheet" href="/css/overlay.css">
+  <script type="text/javascript" src="/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/overlay.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Añadir impresora</title>
 </head>
 <body>
 
 <?php
   head();
+?>
+
+<a class="show-popup" href="#">Instrucciones para agregar tu impresora</a><br/>
+
+<?php
   function intext($type, $name, $text, $defval=""){
     echo "<h5>$text</h5>";
     $error=form_error($name);
@@ -80,6 +85,17 @@ include 'common.php';
   <div id="enviar"><input type="submit" value="Editar" name="cwmedit"/></div>
 </div>
 </form>
+
+<div class="overlay-bg">
+<div class="overlay-content">
+<p style="font-weight:bold;">Instrucciones</p>
+<p>Si todavía no tienes ninguna impresora en el árbol, lo primero será añadirte como "constructor", para ello rellena los campos del formulario <b>"Sobre el constructor"</b>. Únicamente el nombre es obligatorio.</p>
+<p>Cuando ya estés registrado como constructor, deberás rellenar el formulario <b>"Sobre la impresora"</b>, asegúrate de que el número de la impresora es correcto. El propio formulario te guiará para que no introduzcas campos erróneos.<br/>
+Asegúrate de aportar toda la información posible sobre tu impresora.</p>
+<p>Si lo que quieres es editar tu impresora, deberás seleccionarla en el desplegable de <b>"Editar una impresora"</b>. Podrás modificar cualquier información excepto su número de clon. Si te has equivocado en ese campo, ponte en contacto para que lo solucionemos.</p>
+<br/><br/><button class="close-btn">Cerrar</button>
+</div>
+</div>
 
 </body>
 </html>
