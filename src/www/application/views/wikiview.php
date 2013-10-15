@@ -1,4 +1,5 @@
 <?php
+include ('common.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html>
@@ -16,6 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
   <?php
+    head();
     $this->table->set_template(array('table_open'=> '<table border="1" cellpadding="4" cellspacing="0">',));
     foreach ($query->result() as $row){
       // Foto
