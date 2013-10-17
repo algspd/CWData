@@ -35,7 +35,7 @@ include 'common.php';
                 <?php
                 foreach ($fechas as $i){
                 $nombre=str_replace('\'','',$i[0]);
-                echo "data.push({'start': new Date($i[3],$i[2]-1,$i[1]),'content': '$nombre'});\n";
+                echo "data.push({'start': new Date($i[3],$i[2]-1,$i[1]),'content': '$nombre','n': '$i[4]'});\n";
                 }
                 ?>
 
@@ -58,14 +58,9 @@ include 'common.php';
 
         function onselect() {
           var sel = timeline.getSelection();
+          var data=timeline.getData();
           console.log(data[sel[0].row]);
-          //alert(sel[0].content);
-          if (sel.length) {
-            if (sel[0].row != undefined) {
-              var row = sel[0].row;
-              document.title = "event " + row + " selected";
-            }
-          }
+        
         }
     </script>
 

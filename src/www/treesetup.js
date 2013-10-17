@@ -8,11 +8,11 @@ function orientacion() {
     if (sel == "Vertical") {
         layout = "Vertical";
         document.getElementById("dvTreeContainer").style.left = "-140px";
-        document.getElementById("dvTreeContainer").style.top = "70px";
+        document.getElementById("dvTreeContainer").style.top = "180px";
     } else {
         layout = "Horizontal";
         document.getElementById("dvTreeContainer").style.left = "60px";
-        document.getElementById("dvTreeContainer").style.top = "20px";
+        document.getElementById("dvTreeContainer").style.top = "80px";
     }
 
     DrawTree({
