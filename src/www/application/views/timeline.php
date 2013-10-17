@@ -15,35 +15,29 @@ include 'common.php';
   
   echo link_tag('css/style.css');
 ?>
-<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 <script type="text/javascript" src="/js/timeline-min.js"></script>
+<script type="text/javascript" src="/jquery.min.js"></script>
+
 <link rel="stylesheet" type="text/css" href="/css/timeline.css">
 <link href="/css/style.css" rel="stylesheet" type="text/css" />
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <script type="text/javascript">
         var timeline;
 
-        google.load("visualization", "1");
-
-        // Set callback to run when API is loaded
-        google.setOnLoadCallback(drawVisualization);
+        $(document).ready(drawVisualization);
 
         // Called when the Visualization API is loaded.
         function drawVisualization() {
             // Create and populate a data table.
-            var data = new google.visualization.DataTable();
-            data.addColumn('datetime', 'start');
-            data.addColumn('string', 'content');
-
-            data.addRows([
+            var data=[];
                 <?php
                 foreach ($fechas as $i){
                 $nombre=str_replace('\'','',$i[0]);
-                echo "[new Date($i[3],$i[2]-1,$i[1]),'$nombre'],\n";
+                echo "data.push({'start': new Date($i[3],$i[2]-1,$i[1]),'content': '$nombre'});\n";
                 }
                 ?>
-            ]);
 
             var options = {
                 "width":  "98%",
@@ -58,6 +52,20 @@ include 'common.php';
 
             timeline = new links.Timeline(document.getElementById('mytimeline'));
             timeline.draw(data, options);
+            links.events.addListener(timeline, 'select', onselect);
+        }
+
+
+        function onselect() {
+          var sel = timeline.getSelection();
+          console.log(data[sel[0].row]);
+          //alert(sel[0].content);
+          if (sel.length) {
+            if (sel[0].row != undefined) {
+              var row = sel[0].row;
+              document.title = "event " + row + " selected";
+            }
+          }
         }
     </script>
 
