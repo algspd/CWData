@@ -100,3 +100,4 @@ if (!preg_match('/^https?:\/\//', $link)) {
 }
 return $link;
 }
+?>

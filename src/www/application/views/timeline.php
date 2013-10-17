@@ -56,10 +56,34 @@ include 'common.php';
         }
 
 
+   function getImpresora(n) {
+        var source = "/index.php/detail?n=" + n;
+        return $.ajax({
+            type: 'GET',
+            url: source,
+            async:false,
+            contentType: "application/json",
+            dataType: 'json'
+        }).responseText;
+    }
+
         function onselect() {
           var sel = timeline.getSelection();
           var data=timeline.getData();
-          console.log(data[sel[0].row]);
+          var response = getImpresora(data[sel[0].row].n);
+          var impresora = jQuery.parseJSON(response);
+          var pnombre  = 'Clon #'+impresora.printernumber+': '+impresora.printername + '<br/>';
+          var plugar   = 'Lugar: '+impresora.provincia+'<br/>';
+          var pfamilia = 'Familia: '+impresora.human+'<br/>';
+          var pautor   = 'Autor: '+impresora.username+'<br/>';
+          var pmadre   = 'Madre: '+impresora.madre+'<br/>';
+          var pnacim   = 'Nacimiento: '+impresora.fnacimiento+'<br/>';
+          var pweb="";
+          if (impresora.printerurl!="") pweb = '<a href="'+impresora.printerurl+'" target="_blank">Más información</a>';
+
+
+          document.getElementById('respuesta').innerHTML=pnombre+plugar+pfamilia+pautor+pmadre+pnacim+pweb;
+          
         
         }
     </script>
@@ -72,6 +96,7 @@ include 'common.php';
 </div>
 <br/><br/>
 Haz zoom con la rueda del ratón, pincha y arrastra para desplazarte.
+<div id="respuesta"></div>
 
 </body>
 </html>
