@@ -28,6 +28,9 @@ head();
 <br/><br/><span style="font-size:17px;">Número de impresoras: <?php
 echo $query->num_rows() - 2;
 ?></span><br/>
+<span style="font-size:17px;">Último clon subido: <?php
+echo $printermax;
+?></span><br/>
 
   <div id="setup">
     <img src="gear.png" style="vertical-align:middle"/>
