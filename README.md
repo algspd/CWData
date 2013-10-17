@@ -8,3 +8,9 @@ This is intended to dinamically generate the "family tree".
 It's working on [mayTheCloneBeWithYou.com](http://maytheclonebewithyou.com)
 
 It's discused on [Clone Wars Mail List](https://groups.google.com/forum/#!topic/asrob-uc3m-impresoras-3d/zeqdsB9W-VQ)
+
+##API
+To get info from any printer, you can just use this with the printernumber as "n":
+
+`http://maytheclonebewithyou.com/index.php/detail?n=1`
+
