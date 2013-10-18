@@ -12,6 +12,10 @@ include 'common.php';
 <?php
 head();
 ?>
+<div id="patrocinadores" style="position:relative;top:50px;border:1px dashed #050;width:360px;">
+  <span style="color:#050;font-weight:bold;" >Patrocinadores</span>
+  <a href="http://lemonmaker.es/" target="_blank"><img style=""src="lemonmaker.png" /></a>
+</div>
 
 <div style="position:absolute;top:20px;left:350px;">
   <a href="/index.php/get2"><img src="/arb_c.jpg" alt="Arbol circular" style="width:140px;" /></a>
@@ -25,6 +29,7 @@ head();
 <div style="position:absolute;top:20px;left:870px;">
   <a href="/index.php/nofoto"><img src="/prusadordelfrac.png" alt="Prusador del frac" style="width:140px;" /></a>
 </div>
+<br/>
 <br/><br/><span style="font-size:17px;">Número de impresoras: <?php
 echo $query->num_rows() - 2;
 ?></span><br/>
