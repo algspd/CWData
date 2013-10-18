@@ -12,14 +12,14 @@ include 'common.php';
 <?php
   $this->load->helper('html');
   $this->load->helper('date');
-  
-  echo link_tag('css/style.css');
 ?>
 <script type="text/javascript" src="/js/timeline-min.js"></script>
 <script type="text/javascript" src="/jquery.min.js"></script>
+<script type="text/javascript" src="/js/overlay.js"></script>
 
 <link rel="stylesheet" type="text/css" href="/css/timeline.css">
 <link href="/css/style.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="/css/overlay.css">
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -28,7 +28,6 @@ include 'common.php';
 
         $(document).ready(drawVisualization);
 
-        // Called when the Visualization API is loaded.
         function drawVisualization() {
             // Create and populate a data table.
             var data=[];
@@ -53,6 +52,8 @@ include 'common.php';
             timeline = new links.Timeline(document.getElementById('mytimeline'));
             timeline.draw(data, options);
             links.events.addListener(timeline, 'select', onselect);
+
+
         }
 
 
@@ -72,17 +73,18 @@ include 'common.php';
           var data=timeline.getData();
           var response = getImpresora(data[sel[0].row].n);
           var impresora = jQuery.parseJSON(response);
-          var pnombre  = 'Clon #'+impresora.printernumber+': '+impresora.printername + '<br/>';
-          var plugar   = 'Lugar: '+impresora.provincia+'<br/>';
-          var pfamilia = 'Familia: '+impresora.human+'<br/>';
-          var pautor   = 'Autor: '+impresora.username+'<br/>';
-          var pmadre   = 'Madre: '+impresora.madre+'<br/>';
-          var pnacim   = 'Nacimiento: '+impresora.fnacimiento+'<br/>';
+          var pnombre  = '<span style="font-size:15px;font-weight:bold;">Clon #'+impresora.printernumber+': '+impresora.printername + '</span><br/><br/>';
+          var plugar   = 'Lugar: <span style="font-weight:bold;">'+impresora.provincia+'</span><br/>';
+          var pfamilia = 'Familia: <span style="font-weight:bold;">'+impresora.human+'</span><br/>';
+          var pautor   = 'Autor: <span style="font-weight:bold;">'+impresora.username+'</span><br/>';
+          var pmadre   = 'Madre: <span style="font-weight:bold;">'+impresora.madre+'</span><br/>';
+          var pnacim   = 'Nacimiento: <span style="font-weight:bold;">'+impresora.fnacimiento+'</span><br/>';
           var pweb="";
           if (impresora.printerurl!="") pweb = '<a href="'+impresora.printerurl+'" target="_blank">Más información</a>';
 
 
           document.getElementById('respuesta').innerHTML=pnombre+plugar+pfamilia+pautor+pmadre+pnacim+pweb;
+          $('.overlay-bg').show(); //display your popup
           
         
         }
@@ -96,7 +98,14 @@ include 'common.php';
 </div>
 <br/><br/>
 Haz zoom con la rueda del ratón, pincha y arrastra para desplazarte.
+
+<div class="overlay-bg">
+<div class="overlay-content">
 <div id="respuesta"></div>
+<br/><br/><button class="close-btn">Cerrar</button>
+</div>
+</div>
+
 
 </body>
 </html>

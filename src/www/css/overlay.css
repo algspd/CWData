@@ -34,7 +34,7 @@ margin: 0 0 0 -20%; /* add negative left margin for half the width to center the
 cursor: default;
 border-radius: 4px;
 box-shadow: 0 0 5px rgba(0,0,0,0.9);
-background-color:#009200
+background-color:#009200;
 }
  
 .close-btn {

@@ -40,7 +40,7 @@ div.timeline-event {
 div.timeline-event-selected {
     border-color: #FFC200;
     background-color: #FFF785;
-    z-index: 999;
+    z-index: 500;
 }
 
 div.timeline-event-cluster {
