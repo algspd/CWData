@@ -79,12 +79,18 @@ include 'common.php';
           var pautor   = 'Autor: <span style="font-weight:bold;">'+impresora.username+'</span><br/>';
           var pmadre   = 'Madre: <span style="font-weight:bold;">'+impresora.madre+'</span><br/>';
           var pnacim   = 'Nacimiento: <span style="font-weight:bold;">'+impresora.fnacimiento+'</span><br/>';
-          var pweb="";
+          var pweb     = '';
           if (impresora.printerurl!="") pweb = '<a href="'+impresora.printerurl+'" target="_blank">Más información</a>';
 
+          var foto_a = impresora.foto.split('/');
+          var foto   = foto_a[foto_a.length - 1];
 
-          document.getElementById('respuesta').innerHTML=pnombre+plugar+pfamilia+pautor+pmadre+pnacim+pweb;
+          var fotourl  = 'http://maytheclonebewithyou.com/uploads/thumb_'+foto;
+          var foto = '<img id="imagen" href="'+fotourl+'" alt="foto" style="height:100x;width:100px;float:right;margin-right:50px;margin-top30px;" \>';
+
+          document.getElementById('respuesta').innerHTML=foto+pnombre+plugar+pfamilia+pautor+pmadre+pnacim+pweb;
           $('.overlay-bg').show(); //display your popup
+          document.getElementById("imagen").src = fotourl;
           
         
         }
