@@ -15,6 +15,8 @@ head();
 <div id="patrocinadores" style="position:relative;top:50px;border:1px dashed #050;width:360px;">
   <span style="color:#050;font-weight:bold;" >Patrocinadores</span>
   <a href="http://lemonmaker.es/" target="_blank"><img style=""src="lemonmaker.png" /></a>
+  <br/>
+  <a href="http://www.leapto3d.com/" target="_blank"><img style=""src="leap.png" /></a>
 </div>
 
 <div style="position:absolute;top:20px;left:350px;">
