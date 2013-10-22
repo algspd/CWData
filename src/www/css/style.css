@@ -3,6 +3,7 @@ body{
   margin-top:20px;
   background-color:#009200;
   color:#EEE;
+  min-width:1211px;
 }
 a {
   color:#FFF;

@@ -12,11 +12,19 @@ include 'common.php';
 <?php
 head();
 ?>
-<div id="patrocinadores" style="position:relative;top:50px;border:1px dashed #050;width:360px;">
+<br/><br/><span style="font-size:17px;">Número de impresoras: <?php
+echo $query->num_rows() - 2;
+?></span><br/>
+<span style="font-size:17px;">Último clon subido: <?php
+echo $printermax;
+?></span><br/>
+<div class="patrocinadores" style="position:relative;top:10px;border:1px dashed #050;width:360px;">
   <span style="color:#050;font-weight:bold;" >Patrocinadores</span>
   <a href="http://lemonmaker.es/" target="_blank"><img style=""src="lemonmaker.png" /></a>
   <br/>
   <a href="http://www.leapto3d.com/" target="_blank"><img style=""src="leap.png" /></a>
+  <br/>
+  <a href="http://www.iniciativas3d.com" target="_blank"><img style=""src="i3d.png" /></a>
 </div>
 
 <div style="position:absolute;top:20px;left:350px;">
@@ -32,12 +40,6 @@ head();
   <a href="/index.php/nofoto"><img src="/prusadordelfrac.png" alt="Prusador del frac" style="width:140px;" /></a>
 </div>
 <br/>
-<br/><br/><span style="font-size:17px;">Número de impresoras: <?php
-echo $query->num_rows() - 2;
-?></span><br/>
-<span style="font-size:17px;">Último clon subido: <?php
-echo $printermax;
-?></span><br/>
 
   <div id="setup">
     <img src="gear.png" style="vertical-align:middle"/>
@@ -45,13 +47,19 @@ echo $printermax;
       <option selected="selected">Con imágenes</option>
       <option>Sin imágenes</option>
     </select>
+    <!--
     <select name="orientacion" id="orientacion" onchange="orientacion();">
       <option selected="selected">Vertical</option>
       <option>Horizontal</option>
     </select>
+    -->
   </div>
 
   <div id="dvTreeContainer"></div>
+<div class="patrocinadores" style="position:absolute;top:272px;left:980px;border:1px dashed #050;width:245px;min-height:453px">
+  <span style="color:#050;font-weight:bold;" >Patrocinadores</span>
+  <a href="http://www.3dprinters-shop.com/" target="_blank"><img style="display:block;margin-right:auto;margin-left:auto;"src="3dps.png" /></a>
+</div>
   <script type="text/javascript">
   <?php
     treeData($db);
