@@ -22,8 +22,6 @@ echo $printermax;
   <span style="color:#050;font-weight:bold;" >Patrocinadores</span>
   <a href="http://lemonmaker.es/" target="_blank"><img style=""src="lemonmaker.png" /></a>
   <br/>
-  <a href="http://www.leapto3d.com/" target="_blank"><img style=""src="leap.png" /></a>
-  <br/>
   <a href="http://www.iniciativas3d.com" target="_blank"><img style=""src="i3d.png" /></a>
 </div>
 
