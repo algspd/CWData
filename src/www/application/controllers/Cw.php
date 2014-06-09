@@ -114,7 +114,7 @@ class Cw extends CI_Controller {
           $this->form_validation->run();
           $this->load->view('cw_view',$viewdata);
         }
-        $data=array('printer'=>$printer);
+        $data=array('printer'=>$printer,'provincias'=>$provincias);
         $this->load->view('cw_success',$data);
       }
       else if ($this->input->post("cwuser")){
