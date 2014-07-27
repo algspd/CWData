@@ -16,6 +16,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div id="sobre_impresora">
 <h3>Impresora insertada correctamente</h3>
+<?php
+  if (isset($printer['printernumber'])){
+?>
 La impresora se ha insertado en la base de datos.
 Te recomendamos que ahora añadas tu impresora a <a target="_blank" href="http://reprap.org/wiki/Clone_Wars:_El_imperio_de_los_clones/es">la wiki</a>. Te resultará sencillo, solo tienes que añadir este código en la sección que corresponda a tu impresora, después de subir la fotografía:
 
@@ -50,6 +53,9 @@ echo  'File:CW'.
 ?>
 
 No olvides revisar manualmente el texto que insertas en la wiki, y comprobar que se visualiza correctamente.</br></br>
+<?php
+  }
+?>
 
 Ahora puedes <a href="/">visitar el arbol</a> o <a href="/index.php/cw">insertar otra impresora</a>.
 </div>
