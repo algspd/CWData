@@ -26,7 +26,7 @@ function menu() {
       <a href="http://www.reprap.org/wiki/Clone_Wars:_El_imperio_de_los_clones/es" target="_blank">Raw</a><br/>
       <a href="https://github.com/algspd/CWData" target="_blank">GitHub</a><br/>
       <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=M7J9NQ98K9C8E&lc=ES&item_name=May%20The%20Clone%20Be%20With%20You&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted">Donar</a><br/>
-      <a href="malto://info@maytheclonebewithyou.com">Mail</a>
+      <a href="mailto://info@maytheclonebewithyou.com">Mail</a>
     </div>
   </div>
 </div>
@@ -40,7 +40,7 @@ function head() {
 ?>
 <div id="cabecera" style="z-index:4;">
 <a href="/" style="z-index:3;"><img src="/logo.png" alt="logo" style="width:200px;margin-left:28px;z-index:3;"/></a><br/>
-<a style="font-size:17px;text-decoration:none;z-index:3;" href="malto://info@maytheclonebewithyou.com">info@mayTheCloneBeWithYou.com</a>
+<a style="font-size:17px;text-decoration:none;z-index:3;" href="mailto://info@maytheclonebewithyou.com">info@mayTheCloneBeWithYou.com</a>
 <?php
     menu();
 ?>
