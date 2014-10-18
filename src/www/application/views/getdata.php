@@ -55,7 +55,6 @@ echo $printermax;
   <div id="dvTreeContainer"></div>
 <div class="patrocinadores" style="position:absolute;top:272px;left:980px;border:1px dashed #050;width:245px;min-height:453px">
   <span style="color:#050;font-weight:bold;" >Patrocinadores</span>
-  <a href="http://arcadeprinter.com/" target="_blank"><img style="display:block;margin-right:auto;margin-left:auto;margin-bottom:10px;"src="banner_arcade.png" /></a>
   <a href="http://www.3dprinters-shop.com/" target="_blank"><img style="display:block;margin-right:auto;margin-left:auto;"src="3dps.png" /></a>
 </div>
   <script type="text/javascript">
