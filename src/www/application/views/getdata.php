@@ -18,11 +18,6 @@ echo $query->num_rows() - 2;
 <span style="font-size:17px;">Último clon subido: <?php
 echo $printermax;
 ?></span><br/>
-<div class="patrocinadores" style="position:relative;top:10px;border:1px dashed #050;width:360px;">
-  <span style="color:#050;font-weight:bold;" >Patrocinadores</span>
-  <a href="http://lemonmaker.es/" target="_blank"><img style=""src="lemonmaker.png" /></a>
-  <br/>
-</div>
 
 <div style="position:absolute;top:20px;left:350px;">
   <a href="/index.php/get2"><img src="/arb_c.jpg" alt="Arbol circular" style="width:140px;" /></a>
@@ -44,19 +39,16 @@ echo $printermax;
       <option selected="selected">Con imágenes</option>
       <option>Sin imágenes</option>
     </select>
-    <!--
+    
     <select name="orientacion" id="orientacion" onchange="orientacion();">
       <option selected="selected">Vertical</option>
       <option>Horizontal</option>
     </select>
-    -->
+   
   </div>
 
   <div id="dvTreeContainer"></div>
-<div class="patrocinadores" style="position:absolute;top:272px;left:980px;border:1px dashed #050;width:245px;min-height:453px">
-  <span style="color:#050;font-weight:bold;" >Patrocinadores</span>
-  <a href="http://www.3dprinters-shop.com/" target="_blank"><img style="display:block;margin-right:auto;margin-left:auto;"src="3dps.png" /></a>
-</div>
+
   <script type="text/javascript">
   <?php
     treeData($db);
