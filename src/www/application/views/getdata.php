@@ -30,6 +30,18 @@ echo $printermax;
 </div>
 <br/>
 
+<div style="position:absolute;top:300px;left:20px;">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Maytheclonebewithyou.com2 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:336px;height:280px"
+     data-ad-client="ca-pub-3060857077588927"
+     data-ad-slot="7797428392"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
   <div id="setup">
     <img src="gear.png" style="vertical-align:middle"/>
     <select name="imagen" id="imagen" onchange="noimages();">
@@ -37,10 +49,10 @@ echo $printermax;
       <option>Sin imágenes</option>
     </select>
     
-    <select name="orientacion" id="orientacion" onchange="orientacion();">
+    <!--<select name="orientacion" id="orientacion" onchange="orientacion();">
       <option selected="selected">Vertical</option>
       <option>Horizontal</option>
-    </select>
+    </select>-->
    
   </div>
 
