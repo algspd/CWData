@@ -42,7 +42,7 @@ class Cw extends CI_Controller {
     $this->load->helper(array('form', 'url'));
     $this->load->helper('date');
 
-    $config['upload_path'] = '/var/www/CWData/src/www/uploads/';
+    $config['upload_path'] = '/home/javierbr/CWData/uploads/';
     $config['allowed_types'] = 'gif|jpg|png';
     $this->load->library('upload', $config);
 

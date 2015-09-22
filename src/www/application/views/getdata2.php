@@ -28,7 +28,7 @@ genPrinter2($db, "-100000", "rootNode", 0);
 echo "]}";
 $contents = ob_get_contents();
 ob_end_clean();
-file_put_contents("/var/www/CWData/src/www/flare.json", $contents);
+file_put_contents("/home/javierbr/CWData/flare.json", $contents);
 ?>
 
 <?php

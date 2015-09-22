@@ -26,10 +26,7 @@ echo $printermax;
   <a href="/index.php/circles"><img src="/circulos.jpg" alt="Arbol circular" style="width:140px;" /></a>
 </div>
 <div style="position:absolute;top:20px;left:710px;">
-  <a href="/index.php/timeline"><img src="/time" alt="Linea de tiempo" style="width:140px;" /></a>
-</div>
-<div style="position:absolute;top:20px;left:870px;">
-  <a href="/index.php/nofoto"><img src="/prusadordelfrac.png" alt="Prusador del frac" style="width:140px;" /></a>
+  <a href="/index.php/timeline"><img src="/time.png" alt="Linea de tiempo" style="width:140px;" /></a>
 </div>
 <br/>
 
