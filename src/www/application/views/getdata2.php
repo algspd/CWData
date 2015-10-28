@@ -28,7 +28,7 @@ genPrinter2($db, "-100000", "rootNode", 0);
 echo "]}";
 $contents = ob_get_contents();
 ob_end_clean();
-file_put_contents("/home/javierbr/CWData/flare.json", $contents);
+file_put_contents("/var/www/maytheclonebewithyou.com/flare.json", $contents);
 ?>
 
 <?php
@@ -77,7 +77,7 @@ svg {
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
-var diameter = 1800;
+var diameter = 2500;
 
 var tree = d3.layout.tree()
     .size([360, diameter / 2 - 120])

@@ -27,6 +27,12 @@ include 'common.php';
     echo "<span class=\"error\"> $error </span>";
     echo "<input type=\"$type\" name=\"$name\" value=\"" . set_value($name,$defval) . "\" size=\"40\" />";
   }
+  function intext_ro($type, $name, $text, $defval=""){
+    echo "<h5>$text</h5>";
+    $error=form_error($name);
+    echo "<span class=\"error\"> $error </span>";
+    echo "<input type=\"$type\" name=\"$name\" value=\"" . set_value($name,$defval) . "\" size=\"40\" readonly/>";
+  }
 
   function infile($name, $text, $nofoto){
     echo "<h5>$text</h5>";
@@ -47,7 +53,7 @@ include 'common.php';
 <div id="sobre_impresora">
 <h3>Sobre la impresora</h3>
   <?php intext("text","printername","Nombre *"); ?>
-  <?php intext("text","printernumber","N&uacute;mero * (el número por defecto es el siguiente)", $printermax); ?>
+  <?php intext_ro("text","printernumber","N&uacute;mero * (el número por defecto es el siguiente)", $printermax); ?>
   <?php intext("text","fnacimiento","Fecha de nacimiento (dd/mm/aaaa)", mdate($datestring, $time)); ?>
   <?php inlist($models, 'printermodel', "Modelo *");?>
   <?php if (! isset($nofoto)) $nofoto=""; infile("foto","Foto (La foto debería tener <a href=\"/muestra.jpg\" target=\"_blank\">este aspecto</a>)</h5>", $nofoto); ?>
