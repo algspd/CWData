@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.42, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.15  Distrib 10.0.22-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: maytheclonebewithyou
 -- ------------------------------------------------------
--- Server version	5.5.42-1
+-- Server version	10.0.22-MariaDB-0+deb8u1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -137,4 +137,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-05 23:34:43
+-- Dump completed on 2015-11-22 21:49:12
